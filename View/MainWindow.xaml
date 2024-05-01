@@ -1,0 +1,87 @@
+﻿<Window x:Class="TodoApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TodoApp" xmlns:fa="http://schemas.fontawesome.io/icons/"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="1080" Background="Transparent" AllowsTransparency="True" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None">
+    <Border BorderThickness="3" BorderBrush="#7163ba" x:Name="borderWindowScreen" CornerRadius="10" Background="#000A17">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" Margin="15" Width="70" HorizontalAlignment="Right">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="5"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="5"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <!--Закрытие окна-->
+                <Border x:Name="borderClose" MouseDown="borderClose_MouseDown" Grid.Column="4" Style="{StaticResource borderClose}"/>
+                <Border Grid.Column="1"/>
+                <!--На весь экран либо вернуть к сандартному размеру окно-->
+                <Border x:Name="borderInFullScreen" MouseDown="borderInFullScreen_MouseDown" Grid.Column="2" Style="{StaticResource borderInFullScreen}"/>
+                <Border Grid.Column="3"/>
+                <!--Свернуть окно-->
+                <Border x:Name="borderHide" MouseDown="borderHide_MouseDown" Grid.Column="0" Style="{StaticResource borderHide}"/>
+                <Border/>
+            </Grid>
+
+            <Border Grid.Row="0" x:Name="moveWindow" MouseDown="moveWindow_MouseDown"/>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="540"/>
+                    <ColumnDefinition Width="540"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0" Margin="20">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Border Grid.Row="0" CornerRadius="20" BorderThickness="1" Height="55" BorderBrush="#fff">
+                        <StackPanel Orientation="Horizontal" Margin="15">
+                            <TextBox Cursor="Hand" CaretBrush="#fff" Background="Transparent" BorderThickness="0" Foreground="#fff" FontSize="18" Text="Введите название заметки ;)" Width="450" HorizontalAlignment="Left"/>
+                            <fa:ImageAwesome Icon="Question" Foreground="#fff" Width="15">
+                                <fa:ImageAwesome.ToolTip>
+                                    <ToolTip Style="{StaticResource toolTipContent}">
+                                        <TextBlock Text="Если это поле будет пустым, то заметка не может быть создана" Width="200" TextWrapping="Wrap"/>
+                                    </ToolTip>
+                                </fa:ImageAwesome.ToolTip>
+                            </fa:ImageAwesome>
+                        </StackPanel>
+                    </Border>
+
+                    <Grid Grid.Row="1" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="300"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Border Grid.Row="0" CornerRadius="20" BorderThickness="1" MinHeight="200" BorderBrush="#fff">
+                            <TextBox Cursor="Hand" Margin="15" CaretBrush="#fff" Background="Transparent" BorderThickness="0" Foreground="#fff" FontSize="18" Text="Введите описание своей заметки, чтобы было больше информации)" TextWrapping="Wrap" Width="450" HorizontalAlignment="Left"/>
+                        </Border>
+
+                        <Border Cursor="Hand" Grid.Row="1" x:Name="borderSaveTodo" Width="200" Height="50" CornerRadius="20" Margin="30" BorderThickness="1" BorderBrush="#fff">
+                            <Label Content="Сохранить заметку" Foreground="#fff" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Border>
+                    </Grid>
+                </Grid>
+
+                <DataGrid Grid.Column="1" Margin="20" Background="Transparent">
+                    
+                </DataGrid>
+                
+            </Grid>
+        </Grid>
+    </Border>
+</Window>
